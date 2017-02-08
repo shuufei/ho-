@@ -1,16 +1,9 @@
 <template lang="pug">
 div#menu
-  div.g-menu
-    div.g-menu-triger(v-bind:class="getMenuState()")
-      p.g-menu-title HO!
-      div.g-menu-icon(v-on:click="chageMenuState()")
-        i.icono-hamburger
-    div.g-menu-links
-      ul
-        li: a(href="/") {{ home }}
-        li: a(href="/blog") {{ blog }}
-        li: a(href="#") {{ travelInfo }}
-        li: a(href="#") {{ about }}
+  div.g-menu-icon
+    button.hamburger.hamburger--squeeze.g-menu(type="button" v-on:click="changeHamburgerState" v-bind:class="getHamburgerState()")
+      span.hamburger-box.g-menu
+        span.hamburger-inner.g-menu
 </template>
 
 <script>
@@ -23,7 +16,8 @@ export default {
       blog: 'BLOG',
       travelInfo: '旅INFO',
       about: 'ABOUT',
-      gMenuOpen: false
+      gMenuOpen: false,
+      hamburgerActive: false
     }
   },
   methods: {
@@ -36,6 +30,16 @@ export default {
       } else {
         return 'g-menu-close';
       }
+    },
+    changeHamburgerState: function (event) {
+      this.hamburgerActive = !this.hamburgerActive;
+    },
+    getHamburgerState: function (event) {
+      if (this.hamburgerActive) {
+        return 'is-active';
+      } else {
+        return '';
+      }
     }
   }
 }
@@ -45,6 +49,43 @@ export default {
 :root {
   --main-color: #99CDFF;
 }
+
+.g-menu-icon {
+  position: fixed;;
+  top: 46.5px;
+  left: 80px;
+}
+
+.hamburger-inner {
+  color: var(--main-color);
+  background: var(--main-color);
+}
+
+.hamburger-inner::before {
+  background: var(--main-color);
+}
+
+.hamburger-inner::after {
+  background: var(--main-color);
+}
+
+
+
+/*
+
+.menu-icon {
+  color: var(--main-color);
+  font-size: 50px;
+}
+
+.icono-hamburger {
+  color: var(--main-color);
+  position: absolute;
+  left: 0;
+  top: 100px;
+  /*font-size: 400px;*/
+  /*size: 20px;*/
+/*}
 
 .g-menu-triger {
   height: 150px;
@@ -73,12 +114,7 @@ export default {
   left: -100px;
 }
 
-.icono-hamburger {
-  color: white;
-  position: absolute;
-  left: 0;
-  top: 0;
-}
+
 
 .g-menu-icon {
   position: absolute;
@@ -99,5 +135,16 @@ export default {
   cursor: pointer;
   cursor: hand;
 }
+div.g-menu
+  div.g-menu-triger(v-bind:class="getMenuState()")
+    p.g-menu-title HO!
+    div.g-menu-icon(v-on:click="chageMenuState()")
+      i.icono-hamburger
+  div.g-menu-links
+    ul
+      li: a(href="/") {{ home }}
+      li: a(href="/blog") {{ blog }}
+      li: a(href="#") {{ travelInfo }}
+      li: a(href="#") {{ about }}*/
 
 </style>

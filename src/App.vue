@@ -1,9 +1,9 @@
 <template lang="pug">
 div#app.base-background
-  div.top-title(v-bind:class="testMethod()")
-    div: img(v-bind:class="[isActive ? 'active-image' : '', 'top-image1']" src="./assets/image/yagaji1.jpg" height="556.89px" width="850px")
-    div.top-image2
-    div.top-image3
+  div.top-title {{ startModifyImages() }}
+    div: img(v-bind:class="[isActiveImage1 ? 'active-image' : '', isInvalidImage1 ? 'invalid-image' : '', 'top-image']" src="./assets/image/yagaji1.jpg" height="556.89px" width="850px")
+    div: img(v-bind:class="[isActiveImage2 ? 'active-image' : '', isInvalidImage2 ? 'invalid-image' : '', 'top-image']" src="./assets/image/yagaji3.jpg" height="556.89px" width="850px")
+    div: img(v-bind:class="[isActiveImage3 ? 'active-image' : '', isInvalidImage3 ? 'invalid-image' : '', 'top-image']" src="./assets/image/yagaji5.jpg" height="556.89px" width="850px")
     div.top-title-wrapper
       p.ho-title.white-ho-title {{ projectName }}
       p.ho-sub-title もっと身近におきなわを
@@ -25,24 +25,55 @@ export default {
       projectName: 'HO!',
       msg: 'Welcome to Your Vue.js App',
       count: 1,
-      isActive: false,
+      isActiveImage1: false,
+      isInvalidImage1: false,
+      isActiveImage2: false,
+      isInvalidImage2: false,
+      isActiveImage3: false,
+      isInvalidImage3: false,
+      modifyStartFlag: false,
+      modifyTime: 8000
     }
   },
   components: {
     'global-menu': menu
   },
   methods: {
-    testMethod: function (event) {
-      console.log('==========test methods:', this);
-      // let test_method2 = this.testMethod2();
-      // console.log('test_method2: ', test_method2);
-      setTimeout(this.testMethod2, 1500);
-      return 'test-method';
+    startModifyImages: function (event) {
+      if (!this.modifyStartFlag) {
+        setTimeout(this.activeImage1, 3000);
+        this.modifyStartFlag = true;
+      }
     },
-    testMethod2: function (event) {
-      console.log('=====test mothods 2:');
-      this.isActive = true;
-      return 'testMethod2';
+    activeImage1: function (event) {
+      this.isActiveImage1 = true;
+      // this.isActiveImage2 = false;
+      // this.isInvalidImage3 = true;
+      setTimeout(this.activeImage2, this.modifyTime);
+    },
+    activeImage2: function (event) {
+      console.log('activeImage2---');
+      this.isActiveImage2 = true;
+      this.isInvalidImage1 = true;
+      // this.isActiveImage1 = false;
+      this.isActiveImage3 = false;
+      this.isInvalidImage3 = false;
+      setTimeout(this.activeImage3, this.modifyTime);
+    },
+    activeImage3: function (event) {
+      this.isActiveImage3 = true;
+      this.isInvalidImage2 = true;
+      this.isActiveImage1 = false;
+      this.isInvalidImage1 = false;
+      // this.isActiveImage2 = false;
+      setTimeout(this.activeImage4, this.modifyTime);
+    },
+    activeImage4: function (event) {
+      this.isInvalidImage3 = true;
+      this.isActiveImage1 = true;
+      this.isInvalidImage2 = false;
+      this.isActiveImage2 = false;
+      setTimeout(this.activeImage1, 1000);
     }
   }
 }
@@ -73,9 +104,6 @@ consoleVueInstance();
       top: 8px;
       transition: all 500ms 0s ease;
       position: absolute;
-  }
-  --top-images: {
-
   }
 }
 
@@ -139,25 +167,21 @@ consoleVueInstance();
   width: 850px;
 }
 
-.top-image1 {
-  /*height: 450px;*/
-  /*position: absolute;
-  top: 0;
-  left: 0;
-  border-radius: 3px;
-  opacity: 0;*/
-  transition: all 300ms 2s ease;
-}
-
-.active-image {
-  /*border-radius: 3px;*/
-  /*opacity: 1;
+.top-image {
   position: absolute;
   top: 0;
   left: 0;
-  border-radius: 3px;*/
+  border-radius: 3px;
+  opacity: 0;
+}
+
+.active-image {
   animation: fadeIn 2s ease-in 0s normal forwards;
   box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.4);
+}
+
+.invalid-image {
+  animation: fadeOut 2s ease-in 0s normal forwards;
 }
 
 @keyframes fadeIn {
@@ -185,7 +209,7 @@ consoleVueInstance();
   font-size: 260px;
   letter-spacing: 40px;
   color: var(--main-color);
-  animation: title-white 1s ease 1.5s 1 normal;
+  animation: title-white 1s ease 3s 1 normal;
   animation-fill-mode: forwards;
 }
 
@@ -211,7 +235,7 @@ consoleVueInstance();
   margin-left: -25px;
   color: var(--main-color);
   letter-spacing: 15px;
-  animation: title-white 1s ease 1.5s 1 normal;
+  animation: title-white 1s ease 3s 1 normal;
   animation-fill-mode: forwards;
 }
 

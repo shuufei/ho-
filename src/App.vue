@@ -1,9 +1,10 @@
 <template lang="pug">
 div#app.base-background
-  div.top-title {{ startModifyImages() }}
-    div: img(v-bind:class="[isActiveImage1 ? 'active-image' : '', isInvalidImage1 ? 'invalid-image' : '', 'top-image']" src="./assets/image/yagaji1.jpg" height="556.89px" width="850px")
-    div: img(v-bind:class="[isActiveImage2 ? 'active-image' : '', isInvalidImage2 ? 'invalid-image' : '', 'top-image']" src="./assets/image/yagaji3.jpg" height="556.89px" width="850px")
-    div: img(v-bind:class="[isActiveImage3 ? 'active-image' : '', isInvalidImage3 ? 'invalid-image' : '', 'top-image']" src="./assets/image/yagaji5.jpg" height="556.89px" width="850px")
+  div.top-title
+    div.top-images {{ startModifyImages() }}
+      div: img(v-bind:class="[isActiveImage1 ? 'active-image' : '', isInvalidImage1 ? 'invalid-image' : '', 'top-image']" src="./assets/image/yagaji1.jpg" height="556.89px" width="850px")
+      div: img(v-bind:class="[isActiveImage2 ? 'active-image' : '', isInvalidImage2 ? 'invalid-image' : '', 'top-image']" src="./assets/image/yagaji3.jpg" height="556.89px" width="850px")
+      div: img(v-bind:class="[isActiveImage3 ? 'active-image' : '', isInvalidImage3 ? 'invalid-image' : '', 'top-image']" src="./assets/image/yagaji5.jpg" height="556.89px" width="850px")
     div.top-title-wrapper
       p.ho-title.white-ho-title {{ projectName }}
       p.ho-sub-title もっと身近におきなわを
@@ -41,39 +42,34 @@ export default {
   methods: {
     startModifyImages: function (event) {
       if (!this.modifyStartFlag) {
-        setTimeout(this.activeImage1, 3000);
+        setTimeout(this.topImageState1, 3000);
         this.modifyStartFlag = true;
       }
     },
-    activeImage1: function (event) {
+    topImageState1: function (event) {
       this.isActiveImage1 = true;
-      // this.isActiveImage2 = false;
-      // this.isInvalidImage3 = true;
-      setTimeout(this.activeImage2, this.modifyTime);
+      setTimeout(this.topImageState2, this.modifyTime);
     },
-    activeImage2: function (event) {
-      console.log('activeImage2---');
+    topImageState2: function (event) {
       this.isActiveImage2 = true;
       this.isInvalidImage1 = true;
-      // this.isActiveImage1 = false;
       this.isActiveImage3 = false;
       this.isInvalidImage3 = false;
-      setTimeout(this.activeImage3, this.modifyTime);
+      setTimeout(this.topImageState3, this.modifyTime);
     },
-    activeImage3: function (event) {
+    topImageState3: function (event) {
       this.isActiveImage3 = true;
       this.isInvalidImage2 = true;
       this.isActiveImage1 = false;
       this.isInvalidImage1 = false;
-      // this.isActiveImage2 = false;
-      setTimeout(this.activeImage4, this.modifyTime);
+      setTimeout(this.topIageState4, this.modifyTime);
     },
-    activeImage4: function (event) {
+    topIageState4: function (event) {
       this.isInvalidImage3 = true;
       this.isActiveImage1 = true;
       this.isInvalidImage2 = false;
       this.isActiveImage2 = false;
-      setTimeout(this.activeImage1, 1000);
+      setTimeout(this.topImageState1, 1000);
     }
   }
 }

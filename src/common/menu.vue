@@ -7,7 +7,6 @@ div#menu
 </template>
 
 <script>
-
 export default {
   name: 'menu',
   data () {

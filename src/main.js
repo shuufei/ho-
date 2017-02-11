@@ -15,8 +15,6 @@ const routes = {
   '/about': AboutPage
 }
 
-console.log('============');
-
 new Vue({
   el: '#app',
   data: {

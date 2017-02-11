@@ -1,7 +1,7 @@
 <template lang="pug">
 div#app.base-background
-  div.top-title
-    div.top-image1: img(src="./assets/image/yagaji1.jpg" height="556.89px" width="850px")
+  div.top-title(v-bind:class="testMethod()")
+    div: img(v-bind:class="[isActive ? 'active-image' : '', 'top-image1']" src="./assets/image/yagaji1.jpg" height="556.89px" width="850px")
     div.top-image2
     div.top-image3
     div.top-title-wrapper
@@ -17,21 +17,50 @@ div#app.base-background
 
 import menu from './common/menu.vue'
 
+// let topInstance = {
 export default {
   name: 'app',
   data () {
     return {
       projectName: 'HO!',
       msg: 'Welcome to Your Vue.js App',
+      count: 1,
+      isActive: false,
     }
   },
   components: {
     'global-menu': menu
+  },
+  methods: {
+    testMethod: function (event) {
+      console.log('==========test methods:', this);
+      // let test_method2 = this.testMethod2();
+      // console.log('test_method2: ', test_method2);
+      setTimeout(this.testMethod2, 1500);
+      return 'test-method';
+    },
+    testMethod2: function (event) {
+      console.log('=====test mothods 2:');
+      this.isActive = true;
+      return 'testMethod2';
+    }
   }
 }
+
+function consoleVueInstance() {
+  console.log('consoleVueInstance -----');
+}
+
+consoleVueInstance();
+//
+// console.log('----this check. instance before: ', this.default);
+//
+// export default topInstance;
+//
+// console.log('----this check. instance after: ', this);
 </script>
 
-<style scoped>
+<style>
 :root {
   --main-color: #99CDFF;
   --accent-border-color: #94E6AD;
@@ -45,6 +74,13 @@ export default {
       transition: all 500ms 0s ease;
       position: absolute;
   }
+  --top-images: {
+
+  }
+}
+
+.isActive {
+
 }
 
 .base-background {
@@ -58,7 +94,7 @@ export default {
 
 .top-accent-border {
   position: absolute;
-  top: 100%;
+  top: calc(100% - 40px);
   height: 80px;
   width: 22px;
   margin-left: 50%;
@@ -67,7 +103,6 @@ export default {
 .top-accent-border1 {
   display: inline-block;
   position: absolute;
-  top: -40px;
   left: 0;
   background: var(--main-color);
   height: 80px;
@@ -77,7 +112,6 @@ export default {
 .top-accent-border2 {
   display: inline-block;
   position: absolute;
-  top: -40px;
   left: 12px;
   background: var(--accent-border-color);
   height: 80px;
@@ -107,23 +141,33 @@ export default {
 
 .top-image1 {
   /*height: 450px;*/
+  /*position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 3px;
+  opacity: 0;*/
+  transition: all 300ms 2s ease;
+}
+
+.active-image {
+  /*border-radius: 3px;*/
+  /*opacity: 1;
   position: absolute;
   top: 0;
   left: 0;
-}
-
-.top-image1 img {
-  border-radius: 3px;
-  opacity: 0;
-  animation: fadeIn 2s ease-in 1.5s normal;
-  animation-fill-mode: forwards;
+  border-radius: 3px;*/
+  animation: fadeIn 2s ease-in 0s normal forwards;
   box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.4);
-
 }
 
 @keyframes fadeIn {
     0% {opacity: 0}
     100% {opacity: 1}
+}
+
+@keyframes fadeOut {
+    0% {opacity: 1}
+    100% {opacity: 0}
 }
 
 .top-title-wrapper {

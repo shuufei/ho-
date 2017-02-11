@@ -213,7 +213,7 @@ export default {
 /*top blog content*/
 .blog {
   position: relative;
-  margin-top: 200px;
+  margin-top: 150px;
 }
 
 

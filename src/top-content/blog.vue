@@ -23,6 +23,7 @@ div#top-content-blog
           li.article-tag(v-for="tag in popularArticle.tags")
             p {{ tag }}
   div.blog-link
+    p.blog-link-label 記事一覧
 </template>
 
 <script>
@@ -71,12 +72,15 @@ export default {
   --image-width: 370px;
   --image-height: 228.69px;
   --main-font: avenir;
-  --sub-font: YuGothic;
+  --sub-font: "Noto Sans Japanese";
 }
+
+.wf-notosansjapanese { font-family: "Noto Sans Japanese"; }
 
 #top-content-blog {
   text-align: center;
   -webkit-font-smoothing: antialiased;
+  padding-bottom: 150px;
 }
 
 .content-title {
@@ -109,6 +113,7 @@ export default {
   font-family: avenir black;
   font-size: 18px;
   color: var(--main-color);
+  letter-spacing: 1px;
 }
 
 .article-image {
@@ -133,7 +138,8 @@ export default {
 
 .article-title {
   font-family: var(--sub-font);
-  font-weight: 500;
+  /*font-family: "Noto Sans Japanese";*/
+  font-weight: 300;
   font-size: 18px;
   margin-top: 3px;
   margin-bottom: 0;
@@ -177,6 +183,24 @@ ul {
 
 .article-tag:last-child {
   border: none;
+}
+
+.blog-link {
+  height: 40px;
+  width: 230px;
+  border: 1px solid var(--title-color);
+  margin: 50px auto;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.blog-link-label {
+  font-family: var(--sub-font);
+  font-weight: 200;
+  font-size: 14px;
+  letter-spacing: 2px;
 }
 
 </style>

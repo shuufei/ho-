@@ -53,6 +53,7 @@ export default {
   position: fixed;;
   top: 46.5px;
   left: 80px;
+  z-index: 100;
 }
 
 .hamburger-inner {

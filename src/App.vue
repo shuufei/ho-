@@ -1,22 +1,25 @@
 <template lang="pug">
 div#app.base-background
-  div.top-title
-    div.top-images {{ startModifyImages() }}
-      div: img(v-bind:class="[isActiveImage1 ? 'active-image' : '', isInvalidImage1 ? 'invalid-image' : '', 'top-image']" src="./assets/image/yagaji1.jpg" height="556.89px" width="850px")
-      div: img(v-bind:class="[isActiveImage2 ? 'active-image' : '', isInvalidImage2 ? 'invalid-image' : '', 'top-image']" src="./assets/image/yagaji3.jpg" height="556.89px" width="850px")
-      div: img(v-bind:class="[isActiveImage3 ? 'active-image' : '', isInvalidImage3 ? 'invalid-image' : '', 'top-image']" src="./assets/image/yagaji5.jpg" height="556.89px" width="850px")
-    div.top-title-wrapper
-      p.ho-title.white-ho-title {{ projectName }}
-      p.ho-sub-title もっと身近におきなわを
-  div.top-accent-border
-    div.top-accent-border1
-    div.top-accent-border2
   global-menu
+  div.top-content
+    div.top-title
+      div.top-images {{ startModifyImages() }}
+        div: img(v-bind:class="[isActiveImage1 ? 'active-image' : '', isInvalidImage1 ? 'invalid-image' : '', 'top-image']" src="./assets/image/yagaji1.jpg" height="556.89px" width="850px")
+        div: img(v-bind:class="[isActiveImage2 ? 'active-image' : '', isInvalidImage2 ? 'invalid-image' : '', 'top-image']" src="./assets/image/yagaji3.jpg" height="556.89px" width="850px")
+        div: img(v-bind:class="[isActiveImage3 ? 'active-image' : '', isInvalidImage3 ? 'invalid-image' : '', 'top-image']" src="./assets/image/yagaji5.jpg" height="556.89px" width="850px")
+      div.top-title-wrapper
+        p.ho-title.white-ho-title {{ projectName }}
+        p.ho-sub-title もっと身近におきなわを
+    div.top-accent-border
+      div.top-accent-border1
+      div.top-accent-border2
+  top-content-blog.blog
 </template>
 
 <script>
 
 import menu from './common/menu.vue'
+import topBlog from './top-content/blog.vue'
 
 // let topInstance = {
 export default {
@@ -37,7 +40,8 @@ export default {
     }
   },
   components: {
-    'global-menu': menu
+    'global-menu': menu,
+    'top-content-blog': topBlog
   },
   methods: {
     startModifyImages: function (event) {
@@ -73,21 +77,9 @@ export default {
     }
   }
 }
-
-function consoleVueInstance() {
-  console.log('consoleVueInstance -----');
-}
-
-consoleVueInstance();
-//
-// console.log('----this check. instance before: ', this.default);
-//
-// export default topInstance;
-//
-// console.log('----this check. instance after: ', this);
 </script>
 
-<style>
+<style scoped>
 :root {
   --main-color: #99CDFF;
   --accent-border-color: #94E6AD;
@@ -103,10 +95,15 @@ consoleVueInstance();
   }
 }
 
-.isActive {
-
+/*base*/
+@font-face {
+  font-family: susan;
+  src: url(/Users/hanashiroshuuhei/Desktop/material/font/Susan.ttf) format("opentype");
 }
-
+#app {
+  text-align: center;
+  -webkit-font-smoothing: antialiased;
+}
 .base-background {
   background: white;
   position: absolute;
@@ -115,15 +112,20 @@ consoleVueInstance();
   height: 100%;
   width: 100%;
 }
+.top-content {
+  height: calc(100% + 40px);
+  width: 100%;
+}
 
+
+/*border*/
 .top-accent-border {
   position: absolute;
   top: calc(100% - 40px);
   height: 80px;
   width: 22px;
-  margin-left: 50%;
+  margin-left: calc(50% - 11px);
 }
-
 .top-accent-border1 {
   display: inline-block;
   position: absolute;
@@ -132,7 +134,6 @@ consoleVueInstance();
   height: 80px;
   width: 10px;
 }
-
 .top-accent-border2 {
   display: inline-block;
   position: absolute;
@@ -142,20 +143,8 @@ consoleVueInstance();
   width: 10px;
 }
 
-@font-face {
-  font-family: susan;
-  src: url(/Users/hanashiroshuuhei/Desktop/material/font/Susan.ttf) format("opentype");
-}
 
-#app {
-  /*font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;*/
-  text-align: center;
-  /*color: #2c3e50;*/
-  /*margin-top: 60px;*/
-}
-
+/*top title*/
 .top-title {
   margin: 8% auto 0 auto;
   position: relative;
@@ -163,6 +152,7 @@ consoleVueInstance();
   width: 850px;
 }
 
+/*top title image*/
 .top-image {
   position: absolute;
   top: 0;
@@ -170,26 +160,23 @@ consoleVueInstance();
   border-radius: 3px;
   opacity: 0;
 }
-
 .active-image {
   animation: fadeIn 2s ease-in 0s normal forwards;
   box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.4);
 }
-
-.invalid-image {
-  animation: fadeOut 2s ease-in 0s normal forwards;
-}
-
 @keyframes fadeIn {
     0% {opacity: 0}
     100% {opacity: 1}
 }
-
+.invalid-image {
+  animation: fadeOut 2s ease-in 0s normal forwards;
+}
 @keyframes fadeOut {
     0% {opacity: 1}
     100% {opacity: 0}
 }
 
+/*top-title-logo*/
 .top-title-wrapper {
   position: absolute;
   top: 0;
@@ -198,7 +185,6 @@ consoleVueInstance();
   right: 0;
   margin: 140px auto;
 }
-
 .ho-title {
   margin: 0;
   font-family: susan;
@@ -208,26 +194,14 @@ consoleVueInstance();
   animation: title-white 1s ease 3s 1 normal;
   animation-fill-mode: forwards;
 }
-
-
 @keyframes title-white {
-  0% {
-    color: var(--main-color);
-  }
-
-  100% {
-    color: white;
-  }
+  0% {color: var(--main-color);}
+  100% {color: white;}
 }
-
-/*.white-ho-title {
-  color: white;
-}*/
-
 .ho-sub-title {
   font-family: YuGothic medium;
   font-size: 20px;
-  margin-top: -30px;
+  margin-top: -40px;
   margin-left: -25px;
   color: var(--main-color);
   letter-spacing: 15px;
@@ -235,10 +209,13 @@ consoleVueInstance();
   animation-fill-mode: forwards;
 }
 
-ul {
-  list-style-type: none;
-  padding: 0;
+
+/*top blog content*/
+.blog {
+  position: relative;
+  margin-top: 200px;
 }
+
 
 /*li {
   display: inline-block;

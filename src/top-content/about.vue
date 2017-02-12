@@ -64,10 +64,10 @@ export default {
 }
 
 /*base*/
-@font-face {
+/*@font-face {
   font-family: susan;
   src: url(/Users/hanashiroshuuhei/Desktop/material/font/Susan.ttf) format("opentype");
-}
+}*/
 
 #top-content-about {
   text-align: center;

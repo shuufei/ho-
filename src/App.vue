@@ -1,5 +1,5 @@
 <template lang="pug">
-div#app.base-background
+div#home.base-background
   global-menu
   div.top-content
     div.top-title
@@ -30,7 +30,7 @@ import topAbout from './top-content/about.vue'
 
 // let topInstance = {
 export default {
-  name: 'app',
+  name: 'home',
   data () {
     return {
       projectName: 'HO!',
@@ -113,11 +113,11 @@ export default {
 }
 
 /*base*/
-@font-face {
+/*@font-face {
   font-family: susan;
   src: url(/Users/hanashiroshuuhei/Desktop/material/font/Susan.ttf) format("opentype");
-}
-#app {
+}*/
+#home {
   text-align: center;
   -webkit-font-smoothing: antialiased;
 }

@@ -15,9 +15,7 @@ module.exports = {
         loader: 'vue-loader',
         options: {
           postcss: [
-              // require('rucksack-css')(),
             require('postcss-cssnext')(),
-              // require('postcss-media-minmax')(),
             require('postcss-size')()
           ]
         }

@@ -65,7 +65,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 :root {
   --main-color: #99CDFF;
   --title-color: #575757;
@@ -73,6 +73,10 @@ export default {
   --image-height: 228.69px;
   --main-font: avenir;
   --sub-font: "Noto Sans Japanese";
+  --hover-hand: {
+    cursor: pointer;
+    cursor: hand;
+  }
 }
 
 .wf-notosansjapanese { font-family: "Noto Sans Japanese"; }
@@ -104,6 +108,7 @@ export default {
   width: var(--image-width);
   background: white;
   margin-right: 45px;
+  @apply --hover-hand;
 }
 
 .label {
@@ -194,6 +199,8 @@ ul {
   display: flex;
   align-items: center;
   justify-content: center;
+  @apply --hover-hand;
+  background: white;
 }
 
 .blog-link-label {

@@ -14,12 +14,19 @@ div#app.base-background
       div.top-accent-border1
       div.top-accent-border2
   top-content-blog.blog
+  top-content-travel-info.travel-info
+  top-content-about
+  div.fotter
+    p.fotter-ho-title {{ projectName }}
+    p.fotter-ho-sub-title もっと身近におきなわを
 </template>
 
 <script>
 
 import menu from './common/menu.vue'
 import topBlog from './top-content/blog.vue'
+import topTravelInfo from './top-content/travelInfo.vue'
+import topAbout from './top-content/about.vue'
 
 // let topInstance = {
 export default {
@@ -41,12 +48,14 @@ export default {
   },
   components: {
     'global-menu': menu,
-    'top-content-blog': topBlog
+    'top-content-blog': topBlog,
+    'top-content-travel-info': topTravelInfo,
+    'top-content-about': topAbout
   },
   methods: {
     startModifyImages: function (event) {
       if (!this.modifyStartFlag) {
-        setTimeout(this.topImageState1, 3000);
+        setTimeout(this.topImageState1, 2000);
         this.modifyStartFlag = true;
       }
     },
@@ -83,6 +92,14 @@ export default {
 :root {
   --main-color: #99CDFF;
   --accent-border-color: #94E6AD;
+  --title-color: #575757;
+  --main-font: avenir;
+  --sub-font: "Noto Sans Japanese";
+  --fotter-color: #95989A;
+  --hover-hand: {
+    cursor: pointer;
+    cursor: hand;
+  };
   --menu-border: {
       height: 1.5px;
       width: 0px;
@@ -191,7 +208,7 @@ export default {
   font-size: 260px;
   letter-spacing: 40px;
   color: var(--main-color);
-  animation: title-white 1s ease 3s 1 normal;
+  animation: title-white 1s ease 2s 1 normal;
   animation-fill-mode: forwards;
 }
 @keyframes title-white {
@@ -205,7 +222,7 @@ export default {
   margin-left: -25px;
   color: var(--main-color);
   letter-spacing: 15px;
-  animation: title-white 1s ease 3s 1 normal;
+  animation: title-white 1s ease 2s 1 normal;
   animation-fill-mode: forwards;
 }
 
@@ -214,6 +231,33 @@ export default {
 .blog {
   position: relative;
   margin-top: 150px;
+}
+
+/*footer*/
+.fotter {
+  display: flex;
+  position: absolute;
+  left: 130px;
+}
+
+.fotter-ho-title {
+  font-family: susan;
+  font-size: 32px;
+  letter-spacing: 4px;
+  color: var(--fotter-color);
+  padding-top: 0;
+  padding-bottom: 35px;
+  margin: 0;
+  margin-right: 5px;
+}
+
+.fotter-ho-sub-title {
+  font-family: var(--sub-font);
+  font-weight: 300;
+  font-size: 10px;
+  letter-spacing: 1px;
+  color: var(--fotter-color);
+
 }
 
 

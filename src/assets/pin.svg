@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="1310.556 5907.537 26.306 34.542">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke: #ff7272;
+        stroke-linecap: square;
+        stroke-width: 3px;
+        fill-rule: evenodd;
+      }
+
+      .cls-2 {
+        fill: #ff7272;
+        stroke: #fff;
+        stroke-width: 0.5px;
+      }
+    </style>
+  </defs>
+  <g id="pin" transform="translate(1310.806 5907.787)">
+    <g id="travel_info1" transform="translate(0 0)">
+      <g id="pin-2" data-name="pin">
+        <g id="Group-10">
+          <path id="Line" class="cls-1" d="M10,14.5V29.349" transform="translate(2.903 3.443)"/>
+          <ellipse id="Oval-8" class="cls-2" cx="12.903" cy="12.374" rx="12.903" ry="12.374"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

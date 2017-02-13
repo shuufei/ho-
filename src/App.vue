@@ -150,6 +150,7 @@ export default {
   background: var(--main-color);
   height: 80px;
   width: 10px;
+  border-radius: 3px;
 }
 .top-accent-border2 {
   display: inline-block;
@@ -158,6 +159,7 @@ export default {
   background: var(--accent-border-color);
   height: 80px;
   width: 10px;
+  border-radius: 3px;
 }
 
 
@@ -216,7 +218,8 @@ export default {
   100% {color: white;}
 }
 .ho-sub-title {
-  font-family: YuGothic medium;
+  font-family: YuGothic;
+  font-weight: 600;
   font-size: 20px;
   margin-top: -40px;
   margin-left: -25px;

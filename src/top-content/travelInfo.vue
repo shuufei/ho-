@@ -10,7 +10,7 @@ div#top-content-travel-info
         p 旅INFOでは観光地情報を紹介しています.
         p 観光地の位置情報と共に観光地について知ることができます.
         p 旅INFOを活用して旅行の計画立てに活用してみましょう!
-      div.travel-info-link
+      div.travel-info-link(v-on:click="locateTravelInfoPage()")
         p.travel-info-link-label 旅INFOへ
 </template>
 
@@ -20,6 +20,11 @@ export default {
   data () {
     return {
       contentName: '旅INFO'
+    }
+  },
+  methods: {
+    locateTravelInfoPage: function (event) {
+      window.location.href = '/travelinfo';
     }
   }
 }
@@ -49,9 +54,10 @@ export default {
 
 .content-title {
   color: var(--title-color);
-  font-family: var(--main-font) heavy;
+  font-family: var(--main-font);
+  font-weight: 500;
   font-size: 22px;
-  letter-spacing: 3px;
+  letter-spacing: 1.5px;
   margin: 0 auto;
   height: auto;
 }

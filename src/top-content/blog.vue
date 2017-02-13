@@ -22,7 +22,7 @@ div#top-content-blog
         ul
           li.article-tag(v-for="tag in popularArticle.tags")
             p {{ tag }}
-  div.blog-link
+  div.blog-link(v-on:click="locateBlogPage()")
     p.blog-link-label 記事一覧
 </template>
 
@@ -60,6 +60,9 @@ export default {
       };
       this.popularArticle = article;
       return;
+    },
+    locateBlogPage: function (event) {
+      window.location.href = '/blog';
     }
   }
 }
@@ -88,10 +91,11 @@ export default {
 }
 
 .content-title {
-  font-family: avenir heavy;
+  font-family: avenir;
+  font-weight: 500;
   font-size:24px;
   color: #575757;
-  letter-spacing: 3px;
+  letter-spacing: 1.5px;
 }
 
 .blog-content {
@@ -115,7 +119,8 @@ export default {
   text-align: center;
   margin-top: 0;
   margin-bottom: 0;
-  font-family: avenir black;
+  font-family: avenir;
+  font-weight: 600;
   font-size: 18px;
   color: var(--main-color);
   letter-spacing: 1px;

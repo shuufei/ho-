@@ -14,7 +14,7 @@ div#top-content-about
         p {{ member.name }}
       div.member-work
         p {{ member.work }}
-  div.about-link
+  div.about-link(v-on:click="locateAboutPage()")
     p.about-link-label 詳細
 </template>
 
@@ -47,6 +47,11 @@ export default {
         }
       ]
     }
+  },
+  methods: {
+    locateAboutPage: function (event) {
+      window.location.href = '/about';
+    }
   }
 }
 </script>
@@ -78,10 +83,11 @@ export default {
 }
 
 .content-title {
-  font-family: avenir heavy;
+  font-family: avenir;
+  font-weight: 500;
   font-size:24px;
   color: #575757;
-  letter-spacing: 3px;
+  letter-spacing: 1.5px;
 }
 
 .project-title-long {

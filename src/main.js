@@ -25,13 +25,13 @@ const router = new VueRouter({
 
 new Vue({
   router,
-  el: '#app',
+  // el: '#app',
   template: `
     <div id="app">
       <router-view></router-view>
     </div>
   `
-})
+}).$mount('#app')
 
 // const routes = {
 //   '/': Home,

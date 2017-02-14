@@ -9,16 +9,16 @@ div#menu
       p HO!
     div.menu-links
       div.menu-link
-        p.label-home(v-on:click="locateHomePage()") HOME
+        p.label-home(v-on:click="locateHomePage()" v-show="menuOpen") HOME
         div.menu-border
       div.menu-link
-        p.label-blog(v-on:click="locateBlogPage()") BLOG
+        p.label-blog(v-on:click="locateBlogPage()" v-show="menuOpen") BLOG
         div.menu-border
       div.menu-link
-        p.label-travel-info(v-on:click="locateTravelInfoPage()") 旅INFO
+        p.label-travel-info(v-on:click="locateTravelInfoPage()" v-show="menuOpen") 旅INFO
         div.menu-border
       div.menu-link
-        p.label-about(v-on:click="locateAboutPage()") ABOUT
+        p.label-about(v-on:click="locateAboutPage()" v-show="menuOpen") ABOUT
         div.menu-border
 </template>
 
@@ -77,7 +77,7 @@ export default {
   position: fixed;
   height: 100%;
   width: 100%;
-  z-index: 90;
+  z-index: -10;
   background: var(--main-color);
   opacity: 0;
 }
@@ -99,6 +99,7 @@ export default {
 .menu-screen-active {
   transition: all 0.8s;
   opacity: 1;
+  z-index: 90;
 }
 
 .menu-links {
@@ -114,15 +115,16 @@ export default {
   & .menu-link {
     margin: 50px 0;
     position: relative;
+    text-align: center;
     & .menu-border {
       display: inline-block;
       background: white;
-      height: 4px;
+      height: 3px;
       width: 0px;
       position: absolute;
       top: 50px;
       left: calc(50% - 20px);
-      border-radius: 3px;
+      border-radius: 1px;
     }
     & p:hover {
       @apply --hover-hand;

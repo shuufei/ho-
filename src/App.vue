@@ -1,6 +1,6 @@
 <template lang="pug">
 div#home.base-background
-  global-menu
+  global-menu.menu-content
   div.top-content
     div.top-title
       div.top-images {{ startModifyImages() }}
@@ -112,6 +112,12 @@ export default {
   }
 }
 
+.menu-content {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+}
 /*base*/
 /*@font-face {
   font-family: susan;

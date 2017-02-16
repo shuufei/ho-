@@ -186,7 +186,7 @@ export default {
   opacity: 0;
 }
 .active-image {
-  animation: fadeIn 2s ease-in 0s normal forwards;
+  animation: fadeIn 1s ease-in 0s normal forwards;
   box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.4);
 }
 @keyframes fadeIn {
@@ -194,7 +194,7 @@ export default {
     100% {opacity: 1}
 }
 .invalid-image {
-  animation: fadeOut 2s ease-in 0s normal forwards;
+  animation: fadeOut 1s ease-in 0s normal forwards;
 }
 @keyframes fadeOut {
     0% {opacity: 1}

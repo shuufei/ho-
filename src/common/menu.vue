@@ -4,7 +4,7 @@ div#menu
     span.top(v-bind:class="{ 'active': menuOpen, 'inactive': menuClose }")
     span.middle(v-bind:class="{ 'active': menuOpen, 'inactive': menuClose }")
     span.bottom(v-bind:class="{ 'active': menuOpen, 'inactive': menuClose }")
-  div.menu-screen(v-bind:class="{'menu-screen-active': menuOpen}")
+  div(v-bind:class="{'menu-screen-active': menuOpen, 'menu-screen-inactive': menuClose}")
     div.menu-screen-ho
       p HO!
     div.menu-links
@@ -72,16 +72,6 @@ export default {
   }
 }
 
-.menu-screen {
-  transition: all 0.8s;
-  position: fixed;
-  height: 100%;
-  width: 100%;
-  z-index: -10;
-  background: var(--main-color);
-  opacity: 0;
-}
-
 .menu-screen-ho {
   position: absolute;
   margin: 0;
@@ -97,9 +87,60 @@ export default {
 }
 
 .menu-screen-active {
-  transition: all 0.8s;
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  background: var(--main-color);
   opacity: 1;
+  animation: menuFadeIn 1.2s forwards;
   z-index: 90;
+}
+.menu-screen-inactive {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  background: var(--main-color);
+  opacity: 0;
+  animation: menuFadeOut 2s forwards;
+  z-index: 90;
+}
+
+@keyframes menuFadeIn {
+  0% {
+    opacity: 0;
+    height: 0;
+  }
+  1% {
+    opacity: 0;
+    height: 100%;
+  }
+  50% {
+    opacity: 1;
+    height: 100%;
+  }
+  100% {
+    opacity: 1;
+    height: 100%;
+  }
+}
+
+@keyframes menuFadeOut {
+  0% {
+    opacity: 1;
+    height: 100%;
+  }
+  50% {
+    opacity: 0;
+    height: 100%;
+  }
+  99% {
+    opacity: 0;
+    height: 100%;
+  }
+  100% {
+    opacity: 0;
+    height: 0;
+  }
 }
 
 .menu-links {

@@ -53,6 +53,7 @@ export default {
     & .search-input {
       font-size: 16px;
       font-family: var(--sub-font);
+      font-weight: 200;
       color: var(--title-color);
       width: 230px;
       height: 20px;

@@ -26,22 +26,22 @@ export default {
       contentName: 'ABOUT',
       members: [
         {
-          image: './dist/atufumi.jpg',
+          image: '/dist/atufumi.jpg',
           name: 'ふみふみ',
           work: 'bloger'
         },
         {
-          image: './dist/ryusuke.jpg',
+          image: '/dist/ryusuke.jpg',
           name: 'パウエル',
           work: 'bloger'
         },
         {
-          image: './dist/masahiro.jpg',
+          image: '/dist/masahiro.jpg',
           name: 'ハマひろ',
           work: 'bloger'
         },
         {
-          image: './dist/fei.jpg',
+          image: '/dist/fei.jpg',
           name: 'fei',
           work: 'engineer'
         }

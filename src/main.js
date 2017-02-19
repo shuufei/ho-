@@ -1,13 +1,17 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import App from './App.vue'
+import BlogWrap from './blog/blogWrap.vue'
 import Blog from './blog/blog.vue'
+import Article from './blog/article.vue'
 
 Vue.use(VueRouter)
 
 const NotFound = App;
 const Home = App;
-const BlogPage = Blog;
+const BlogPage = BlogWrap;
+const BlogDefault = Blog;
+const ArticlePage = Article;
 const TravelInfoPage = { template: '<p>trabel info page</p>' }
 const AboutPage = { template: '<p>about page cache confirm</p>' }
 
@@ -17,7 +21,19 @@ const router = new VueRouter({
   routes: [
     // { path: '*', component: Home },
     { path: '/', component: Home },
-    { path: '/blog', component: BlogPage },
+    { path: '/blog', component: BlogPage,
+      children: [
+        {
+          path: '',
+          component: BlogDefault
+        },
+        {
+          path: 'articles/:id',
+          component: ArticlePage,
+          props: true
+        }
+      ]
+    },
     { path: '/travelinfo', component: TravelInfoPage },
     { path: '/about', component: AboutPage }
   ]
@@ -32,23 +48,3 @@ new Vue({
     </div>
   `
 }).$mount('#app')
-
-// const routes = {
-//   '/': Home,
-//   '/blog': BlogPage,
-//   '/travelInfo': TravelInfoPage,
-//   '/about': AboutPage
-// }
-
-// new Vue({
-//   el: '#app',
-//   data: {
-//     currentRoute: window.location.pathname
-//   },
-//   computed: {
-//     ViewComponent () {
-//       return routes[this.currentRoute] || NotFound
-//     }
-//   },
-//   render (h) { return h(this.ViewComponent) }
-// })

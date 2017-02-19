@@ -135,20 +135,47 @@ export default {
   height: 100%;
   width: 100%;
 }
-.top-content {
+
+/*.top-content {
   height: calc(100% + 40px);
   width: 100%;
-}
+}*/
 
 
 /*border*/
-.top-accent-border {
+@media screen and (height <= 750px) {
+  .top-content {
+    height: 800px;
+    width: 100%;
+  }
+  .top-accent-border {
+    position: absolute;
+    top: 760px;
+    height: 80px;
+    width: 24px;
+    margin-left: calc(50% - 12px);
+  }
+}
+@media screen and (height >= 750px) {
+  .top-content {
+    height: calc(100% + 40px);
+    width: 100%;
+  }
+  .top-accent-border {
+    position: absolute;
+    top: calc(100% - 40px);
+    height: 80px;
+    width: 24px;
+    margin-left: calc(50% - 12px);
+  }
+}
+/*.top-accent-border {
   position: absolute;
   top: calc(100% - 40px);
   height: 80px;
   width: 24px;
   margin-left: calc(50% - 12px);
-}
+}*/
 .top-accent-border1 {
   display: inline-block;
   position: absolute;

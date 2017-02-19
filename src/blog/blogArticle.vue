@@ -1,12 +1,12 @@
 <template lang="pug">
 div#blog-article
-  img(v-bind:src="image")
+  img(v-bind:src="image" v-on:click="locationArticle")
   div.article-info
-    p.article-info-date {{ date }}
-    p.article-info-title {{ title }}
+    p.article-info-date(v-on:click="locationArticle") {{ date }}
+    p.article-info-title(v-on:click="locationArticle") {{ title }}
     div.article-info-tags
       ul
-        li.article-info-tag(v-for="tag in tags")
+        li.article-info-tag(v-for="tag in tags" v-on:click="locationArticleList(tag)")
           p {{ tag }}
   div.article-info-share
     i.fi-heart
@@ -19,13 +19,22 @@ div#blog-article
 export default {
   name: 'article',
   props: [
+    'id',
     'date',
     'title',
     'image',
     'tags',
     'author',
     'share'
-  ]
+  ],
+  methods: {
+    locationArticle: function (event) {
+      window.location.href = '/blog/articles/' + this.id;
+    },
+    locationArticleList: function (event, tag) {
+      window.location.href = '/articles?tag=' + tag;
+    }
+  }
 }
 </script>
 
@@ -56,6 +65,9 @@ export default {
     height: var(--image-height);
     border-radius: 3px;
     margin-right: 18px;
+    &:hover {
+      @apply --hover-hand;
+    }
   }
   & .article-info {
     & .article-info-date {
@@ -67,6 +79,9 @@ export default {
       text-align: left;
       color: var(--title-color);
       text-align: left;
+      &:hover {
+        @apply --hover-hand;
+      }
     }
     & .article-info-title {
       font-family: var(--sub-font);
@@ -76,10 +91,13 @@ export default {
       color: var(--title-color);
       margin-top: 0px;
       text-align: left;
+      &:hover {
+        @apply --hover-hand;
+      }
     }
     & .article-info-tags {
       text-align: left;
-      margin-top: 10px;
+      margin-top: 15px;
       font-family: var(--sub-font);
       font-size: 12px;
       color: var(--title-color);
@@ -91,17 +109,20 @@ export default {
         & .article-info-tag {
           margin-top: 0;
           margin-bottom: 0;
-          margin-right: 20px;
-          opacity: 0.8;
+          margin-right: 15px;
+          opacity: 0.6;
           font-weight: 500;
           display: inline-block;
           padding: 0;
           letter-spacing: 1px;
-          padding-right: 15px;
-          height: 15px;
+          padding-right: 12px;
+          height: 13px;
           border-right: 1px solid #ABABAB;
+          &:hover {
+            @apply --hover-hand;
+          }
           & p {
-              margin-top: -2px;
+              margin-top: -3px;
               margin-bottom: 0;
           }
           &:last-child {
@@ -127,6 +148,8 @@ export default {
       color: var(--main-color);
       font-size: 16px;
       font-weight: 500;
+      margin:0;
+      padding: 0;
     }
   }
   & .article-info-author {
@@ -139,14 +162,5 @@ export default {
       border-radius: 50%;
     }
   }
-  &:hover {
-    @apply --hover-hand;
-    background: #EAF5FF;
-  }
-}
-
-p {
-  margin:0;
-  padding: 0;
 }
 </style>

@@ -11,7 +11,8 @@ div#blog
         content-order
       div.article-list
         blog-article.blog-article(v-for="article in articles"
-          v-bind:image="article.image",
+          v-bind:id="article.id"
+          v-bind:image="article.image"
           v-bind:title="article.title"
           v-bind:date="article.date"
           v-bind:tags="article.tags"
@@ -38,52 +39,58 @@ export default {
       projectName: 'HO!',
       articles: [
         {
+          id: 1,
           title: '美ら海水族館を紹介するよ',
-          image: './dist/new-article-image.jpg',
+          image: '/dist/new-article-image.jpg',
           date: '2016.12.08',
           tags: [ '観光地紹介', '海' ],
           share: 36,
-          author: './dist/ryusuke.jpg'
+          author: '/dist/ryusuke.jpg'
         },
         {
+          id: 2,
           title: '屋我地の魅力を伝えます',
-          image: './dist/yagaji6.jpg',
+          image: '/dist/yagaji6.jpg',
           date: '2016.11.18',
           tags: [ '観光地紹介', '屋我地' ],
           share: 149,
-          author: './dist/atufumi.jpg'
+          author: '/dist/atufumi.jpg'
         },
         {
+          id: 3,
           title: '今日も屋我地でキャンプしたよ…',
-          image: './dist/yagaji5.jpg',
+          image: '/dist/yagaji5.jpg',
           date: '2016.11.07',
           tags: [ '観光地紹介', '屋我地', 'アウトドア' ],
           share: 87,
-          author: './dist/atufumi.jpg'
+          author: '/dist/atufumi.jpg'
         },
         {
+          id: 4,
           title: 'これが沖縄の海',
-          image: './dist/yagaji1.jpg',
+          image: '/dist/yagaji1.jpg',
           date: '2016.09.16',
           tags: [ '観光地紹介', '海' ],
           share: 100,
-          author: './dist/masahiro.jpg'
+          author: '/dist/masahiro.jpg'
         },
         {
+          id: 5,
           title: '沖縄そばの名店',
-          image: './dist/soba.jpg',
+          image: '/dist/soba.jpg',
           date: '2016.08.20',
           tags: [ 'グルメ' ],
           share: 77,
-          author: './dist/fei.jpg'
+          author: '/dist/fei.jpg'
         },
         {
+          id: 6,
           title: 'ファイヤーファイヤー',
-          image: './dist/yagaji7.jpg',
+          image: '/dist/yagaji7.jpg',
           date: '2016.08.11',
           tags: [ 'アウトドア' ],
           share: 87,
-          author: './dist/ryusuke.jpg'
+          author: '/dist/ryusuke.jpg'
         }
       ]
     }

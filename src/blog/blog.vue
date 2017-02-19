@@ -18,7 +18,7 @@ div#blog
           v-bind:tags="article.tags"
           v-bind:share="article.share"
           v-bind:author="article.author")
-        div.more-loading
+        div.more-loading(v-on:click="loadArticles")
           p もっと見る
     div.dummy-popular-block
   side-block-popular.popular-block
@@ -101,6 +101,31 @@ export default {
     'search': search,
     'content-order': contentOrder,
     'blog-article': blogArticle
+  },
+  methods: {
+    loadArticles: function (event) {
+      let addArticles = [
+        {
+          id: 7,
+          title: '花火',
+          image: '/dist/yagaji3.jpg',
+          date: '2016.08.01',
+          tags: [ 'アウトドア' ],
+          share: 32,
+          author: '/dist/fei.jpg'
+        },
+        {
+          id: 8,
+          title: '若者と外人のまち、ミハマ',
+          image: '/dist/mihama.jpg',
+          date: '2016.07.14',
+          tags: [ '観光地紹介', '都会' ],
+          share: 98,
+          author: '/dist/masahiro.jpg'
+        }
+      ];
+      this.articles = this.articles.concat(addArticles);
+    }
   }
 }
 </script>

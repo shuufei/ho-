@@ -8,6 +8,7 @@ div#blog
     div.article-block
       div.search-sort-info
         search
+        content-order
       div.article-list
     div.dummy-popular-block
   side-block-popular.popular-block
@@ -18,6 +19,7 @@ div#blog
 import menu from '../common/menu.vue'
 import popularBlock from './sideBlock.vue'
 import search from './../common/search.vue'
+import contentOrder from './../common/contentOrder.vue'
 
 export default {
   name: 'blog',
@@ -38,7 +40,8 @@ export default {
   components: {
     'global-menu': menu,
     'side-block-popular': popularBlock,
-    'search': search
+    'search': search,
+    'content-order': contentOrder
   }
 }
 </script>
@@ -103,8 +106,6 @@ body {
 .article-block {
   position: relative;
   background: white;
-  /*height: calc(100% - 50px - 150px);*/
-  /*height: 100%;*/
   width: 600px;
   margin-right: 30px;
   & .search-sort-info {
@@ -112,6 +113,8 @@ body {
     height: 25px;
     width: 600px;
     display: flex;
+    align-items: center;
+    justify-content: space-between;
   }
 }
 
@@ -123,7 +126,7 @@ body {
 .popular-block {
   position: fixed;
   top: 180px;
-  right: 140px;
+  left: 65%;
   z-index: 100;
 }
 

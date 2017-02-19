@@ -38,9 +38,10 @@ export default {
   display: flex;
   align-items: center;
   & i {
-    font-size: 28px;
+    font-size: 25px;
     color: var(--title-color);
     margin-right: 15px;
+    margin-top: 3px;
     &:hover {
       @apply --hover-hand;
     }
@@ -48,25 +49,25 @@ export default {
   & .search-input-block {
     position: relative;
     height: 25px;
-    width: 250px;
+    width: 230px;
     & .search-input {
       font-size: 16px;
       font-family: var(--sub-font);
       color: var(--title-color);
-      width: 250px;
+      width: 230px;
       height: 20px;
     }
     & .search-border {
-      transition: all 0.8s 0s ease-out;
+      transition: all 0.5s 0s ease-out;
       background: var(--title-color);
-      height: 1.3px;
+      height: 1px;
       width: 0;
       position: absolute;
       top: 27px;
       left: -5px;
     }
     & .search-active-border {
-      width: 250px;
+      width: 240px;
     }
   }
 

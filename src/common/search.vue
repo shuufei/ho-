@@ -59,8 +59,9 @@ export default {
     }
     & .search-border {
       transition: all 0.5s 0s ease-out;
-      background: var(--title-color);
-      height: 1px;
+      background: var(--main-color);
+      opacity: 0.5;
+      height: 1.5px;
       width: 0;
       position: absolute;
       top: 27px;

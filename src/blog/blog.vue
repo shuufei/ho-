@@ -10,6 +10,13 @@ div#blog
         search
         content-order
       div.article-list
+        blog-article.blog-article(v-for="article in articles"
+          v-bind:image="article.image",
+          v-bind:title="article.title"
+          v-bind:date="article.date"
+          v-bind:tags="article.tags"
+          v-bind:share="article.share"
+          v-bind:author="article.author")
     div.dummy-popular-block
   side-block-popular.popular-block
 </template>
@@ -20,6 +27,7 @@ import menu from '../common/menu.vue'
 import popularBlock from './sideBlock.vue'
 import search from './../common/search.vue'
 import contentOrder from './../common/contentOrder.vue'
+import blogArticle from './blogArticle.vue'
 
 export default {
   name: 'blog',
@@ -29,10 +37,23 @@ export default {
       articles: [
         {
           title: '美ら海水族館を紹介するよ',
+          image: './dist/new-article-image.jpg',
           date: '2016.12.08',
           tags: [ '観光地紹介', '海' ],
           share: 36,
-          auther: 'パウエル'
+          auther: 'パウエル',
+          // image: './../assets/image/member/ryusuke.jpg'
+          author: './dist/ryusuke.jpg'
+        },
+        {
+          title: '屋我地の魅力を伝えます',
+          image: './dist/yagaji6.jpg',
+          date: '2016.11.18',
+          tags: [ '観光地紹介', 'アウトドア' ],
+          share: 149,
+          auther: 'パウエル',
+          // image: './../assets/image/member/ryusuke.jpg'
+          author: './dist/atufumi.jpg'
         }
       ]
     }
@@ -41,7 +62,8 @@ export default {
     'global-menu': menu,
     'side-block-popular': popularBlock,
     'search': search,
-    'content-order': contentOrder
+    'content-order': contentOrder,
+    'blog-article': blogArticle
   }
 }
 </script>
@@ -116,6 +138,12 @@ body {
     align-items: center;
     justify-content: space-between;
   }
+  & .article-list {
+    margin: 50px 0;
+    & .blog-article {
+      margin-bottom: 30px;
+    }
+  }
 }
 
 .dummy-popular-block {
@@ -127,7 +155,6 @@ body {
   position: fixed;
   top: 180px;
   left: 65%;
-  z-index: 100;
 }
 
 

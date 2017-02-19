@@ -151,10 +151,10 @@ export default {
   font-weight: 600;
   font-size: 36px;
   letter-spacing: 5px;
-  margin: 180px auto;
+  margin: 15% auto;
   width: 300px;
   & .menu-link {
-    margin: 50px 0;
+    margin: 0 0 50px;
     position: relative;
     text-align: center;
     & .menu-border {

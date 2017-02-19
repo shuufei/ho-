@@ -146,12 +146,13 @@ export default {
   position: absolute;
   top: calc(100% - 40px);
   height: 80px;
-  width: 22px;
-  margin-left: calc(50% - 11px);
+  width: 24px;
+  margin-left: calc(50% - 12px);
 }
 .top-accent-border1 {
   display: inline-block;
   position: absolute;
+  top: 20px;
   left: 0;
   background: var(--main-color);
   height: 80px;
@@ -161,7 +162,7 @@ export default {
 .top-accent-border2 {
   display: inline-block;
   position: absolute;
-  left: 12px;
+  left: 14px;
   background: var(--accent-border-color);
   height: 80px;
   width: 10px;
@@ -239,7 +240,7 @@ export default {
 /*top blog content*/
 .blog {
   position: relative;
-  margin-top: 150px;
+  margin-top: 100px;
 }
 
 /*footer*/

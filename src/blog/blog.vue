@@ -4,21 +4,41 @@ div#blog
   div.blog-title-block
     div.blog-title-under-line
       p.blog-title BLOG
+  div.blog-main-content
+    div.article-block
+      div.search-sort-info
+        search
+      div.article-list
+    div.dummy-popular-block
+  side-block-popular.popular-block
 </template>
 
 <script>
 
 import menu from '../common/menu.vue'
+import popularBlock from './sideBlock.vue'
+import search from './../common/search.vue'
 
 export default {
   name: 'blog',
   data () {
     return {
       projectName: 'HO!',
+      articles: [
+        {
+          title: '美ら海水族館を紹介するよ',
+          date: '2016.12.08',
+          tags: [ '観光地紹介', '海' ],
+          share: 36,
+          auther: 'パウエル'
+        }
+      ]
     }
   },
   components: {
-    'global-menu': menu
+    'global-menu': menu,
+    'side-block-popular': popularBlock,
+    'search': search
   }
 }
 </script>
@@ -52,7 +72,7 @@ body {
 
 .blog-title-block {
   position: relative;
-  margin: 120px auto;
+  margin: 120px auto 0;
   width: 100px;
   text-align: center;
   & .blog-title-under-line {
@@ -72,6 +92,39 @@ body {
     top: -23.5px;
     left: -1.3px;;
   }
+}
+
+.blog-main-content {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+.article-block {
+  position: relative;
+  background: white;
+  /*height: calc(100% - 50px - 150px);*/
+  /*height: 100%;*/
+  width: 600px;
+  margin-right: 30px;
+  & .search-sort-info {
+    position: relative;
+    height: 25px;
+    width: 600px;
+    display: flex;
+  }
+}
+
+.dummy-popular-block {
+    width: 350px;
+    height: 500px;
+}
+
+.popular-block {
+  position: fixed;
+  top: 180px;
+  right: 140px;
+  z-index: 100;
 }
 
 

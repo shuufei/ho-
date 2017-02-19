@@ -49,6 +49,8 @@ export default {
   background: white;
   display: flex;
   position: relative;
+  padding: 10px;
+  border-radius: 3px;
   & img {
     width: var(--image-width);
     height: var(--image-height);
@@ -112,7 +114,7 @@ export default {
   & .article-info-share {
     position: absolute;
     right: 75px;
-    bottom: 6px;
+    bottom: 16px;
     display: flex;
     align-items: center;
     & i {
@@ -129,13 +131,17 @@ export default {
   }
   & .article-info-author {
     position: absolute;
-    bottom: 0;
+    bottom: 10px;
     right: 0;
     & img {
       size: 45px;
       object-fit: cover;
       border-radius: 50%;
     }
+  }
+  &:hover {
+    @apply --hover-hand;
+    background: #EAF5FF;
   }
 }
 

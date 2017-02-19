@@ -17,6 +17,8 @@ div#blog
           v-bind:tags="article.tags"
           v-bind:share="article.share"
           v-bind:author="article.author")
+        div.more-loading
+          p もっと見る
     div.dummy-popular-block
   side-block-popular.popular-block
 </template>
@@ -41,19 +43,47 @@ export default {
           date: '2016.12.08',
           tags: [ '観光地紹介', '海' ],
           share: 36,
-          auther: 'パウエル',
-          // image: './../assets/image/member/ryusuke.jpg'
           author: './dist/ryusuke.jpg'
         },
         {
           title: '屋我地の魅力を伝えます',
           image: './dist/yagaji6.jpg',
           date: '2016.11.18',
-          tags: [ '観光地紹介', 'アウトドア' ],
+          tags: [ '観光地紹介', '屋我地' ],
           share: 149,
-          auther: 'パウエル',
-          // image: './../assets/image/member/ryusuke.jpg'
           author: './dist/atufumi.jpg'
+        },
+        {
+          title: '今日も屋我地でキャンプしたよ…',
+          image: './dist/yagaji5.jpg',
+          date: '2016.11.07',
+          tags: [ '観光地紹介', '屋我地', 'アウトドア' ],
+          share: 87,
+          author: './dist/atufumi.jpg'
+        },
+        {
+          title: 'これが沖縄の海',
+          image: './dist/yagaji1.jpg',
+          date: '2016.09.16',
+          tags: [ '観光地紹介', '海' ],
+          share: 100,
+          author: './dist/masahiro.jpg'
+        },
+        {
+          title: '沖縄そばの名店',
+          image: './dist/soba.jpg',
+          date: '2016.08.20',
+          tags: [ 'グルメ' ],
+          share: 77,
+          author: './dist/fei.jpg'
+        },
+        {
+          title: 'ファイヤーファイヤー',
+          image: './dist/yagaji7.jpg',
+          date: '2016.08.11',
+          tags: [ 'アウトドア' ],
+          share: 87,
+          author: './dist/ryusuke.jpg'
         }
       ]
     }
@@ -141,7 +171,17 @@ body {
   & .article-list {
     margin: 50px 0;
     & .blog-article {
-      margin-bottom: 30px;
+      margin-bottom: 20px;
+    }
+    & .more-loading {
+      margin: 50px auto 100px;
+      @apply --hover-hand;
+      & p {
+        font-family: var(--sub-font);
+        color: var(--title-color);
+        font-size: 14px;
+        letter-spacing: 1px;
+      }
     }
   }
 }

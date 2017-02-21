@@ -139,7 +139,8 @@ export default {
   --hover-hand: {
     cursor: pointer;
     cursor: hand;
-  }}
+  }
+}
 
 #blog {
   text-align: center;

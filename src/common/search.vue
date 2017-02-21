@@ -40,6 +40,7 @@ export default {
   & i {
     font-size: 25px;
     color: var(--title-color);
+    opacity: 0.7;
     margin-right: 15px;
     margin-top: 3px;
     &:hover {

@@ -111,7 +111,7 @@ export default {
 
 .members {
   display: flex;
-  width: calc(170px * 3 + 100px);
+  width: calc(160px * 3 + 90px);
   margin: 100px auto 0;
 }
 
@@ -120,7 +120,7 @@ export default {
 }
 
 .member-image img {
-  size: 100px;
+  size: 90px;
   object-fit: cover;
   border-radius: 50%;
   box-shadow: 0 3px 3px rgba(0, 0, 0, 0.15);

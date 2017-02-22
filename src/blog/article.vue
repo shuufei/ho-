@@ -2,7 +2,7 @@
 div#article
   global-menu.menu-content
   side-block-associate.associate-block
-  div.blog-title-block
+  div.blog-title-block(v-on:click="locateBlogPage")
     div.blog-title-under-line
       p.blog-title BLOG
   div.article-main-content {{ getArticle() }}
@@ -40,7 +40,7 @@ div#article
 
 <script>
 import menu from './../common/menu.vue'
-import sideBlock from './sideBlock.vue'
+import associateBlock from './sideBlockAssociate.vue'
 import share from './../common/share.vue'
 
 export default {
@@ -79,11 +79,14 @@ export default {
         '　',
         'そんなこんなで屋我地の紹介終わり！！次回は恩納村くらいを紹介しようかな！！'
       ];
+    },
+    locateBlogPage: function (event) {
+      window.location.href = '/blog';
     }
   },
   components: {
     'global-menu': menu,
-    'side-block-associate': sideBlock,
+    'side-block-associate': associateBlock,
     'share': share
   }
 }
@@ -284,6 +287,7 @@ body {
   margin: 120px auto 0;
   width: 100px;
   text-align: center;
+  @apply --hover-hand;
   & .blog-title-under-line {
     position: relative;
     height: 10px;

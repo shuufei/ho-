@@ -1,7 +1,7 @@
 <template lang="pug">
 div#blog
   global-menu.menu-content
-  div.blog-title-block
+  div.blog-title-block(v-on:click="locateBlogPage")
     div.blog-title-under-line
       p.blog-title BLOG
   div.blog-main-content
@@ -27,7 +27,7 @@ div#blog
 <script>
 
 import menu from '../common/menu.vue'
-import popularBlock from './sideBlock.vue'
+import popularBlock from './sideBlockPopular.vue'
 import search from './../common/search.vue'
 import contentOrder from './../common/contentOrder.vue'
 import blogArticle from './blogArticle.vue'
@@ -125,6 +125,9 @@ export default {
         }
       ];
       this.articles = this.articles.concat(addArticles);
+    },
+    locateBlogPage: function (event) {
+      window.location.href = '/blog';
     }
   }
 }
@@ -163,6 +166,7 @@ body {
   margin: 120px auto 0;
   width: 100px;
   text-align: center;
+  @apply --hover-hand;
   & .blog-title-under-line {
     position: relative;
     height: 10px;

@@ -5,9 +5,9 @@ div#top-content-blog
     div.article {{ getNewArticle() }}
       p.label NEW
       div.article-image
-        img(src="./../assets/image/new-article-image.jpg")
-      p.article-date {{ newArticle.date }}
-      p.article-title {{ newArticle.title }}
+        img(src="./../assets/image/new-article-image.jpg" v-on:click="locateArticlePage")
+      p.article-date(v-on:click="locateArticlePage") {{ newArticle.date }}
+      p.article-title(v-on:click="locateArticlePage") {{ newArticle.title }}
       div.article-tags
         ul
           li.article-tag(v-for="tag in newArticle.tags")
@@ -15,9 +15,9 @@ div#top-content-blog
     div.article {{ getPopularArticle() }}
       p.label POPULAR
       div.article-image
-        img(src="./../assets/image/yagaji6.jpg")
-      p.article-date {{ popularArticle.date }}
-      p.article-title {{ popularArticle.title }}
+        img(src="./../assets/image/yagaji6.jpg" v-on:click="locateArticlePage")
+      p.article-date(v-on:click="locateArticlePage") {{ popularArticle.date }}
+      p.article-title(v-on:click="locateArticlePage") {{ popularArticle.title }}
       div.article-tags
         ul
           li.article-tag(v-for="tag in popularArticle.tags")
@@ -63,6 +63,9 @@ export default {
     },
     locateBlogPage: function (event) {
       window.location.href = '/blog';
+    },
+    locateArticlePage: function (event) {
+      window.location.href = '/blog/articles/1';
     }
   }
 }
@@ -112,7 +115,6 @@ export default {
   width: var(--image-width);
   background: white;
   margin-right: 45px;
-  @apply --hover-hand;
 }
 
 .label {
@@ -134,6 +136,7 @@ export default {
   height: var(--image-height);
   width: var(--image-width);
   border-radius: 3px;
+  @apply --hover-hand;
 }
 
 .article-date {
@@ -144,6 +147,7 @@ export default {
   margin-bottom: 0;
   text-align: left;
   color: var(--title-color);
+  @apply --hover-hand;
 }
 
 .article-title {
@@ -155,6 +159,7 @@ export default {
   margin-bottom: 0;
   text-align: left;
   color: var(--title-color);
+  @apply --hover-hand;
 }
 
 .article-tags {
@@ -189,6 +194,7 @@ ul {
 .article-tag p {
   margin-top: -2px;
   margin-bottom: 0;
+  @apply --hover-hand;
 }
 
 .article-tag:last-child {

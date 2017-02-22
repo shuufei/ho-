@@ -24,14 +24,17 @@ div#article
         share.share-component
       div.article-content-text
         p(v-for="line in text") {{ line }}
+      p.author-label 著者
       div.article-content-author
-        p.author-label
-        img()
-        p.author-name
-        p.author-profile
+        img(v-bind:src="author")
+        div.author-profile
+          p.name {{ name }}
+          p.profile(v-for="line in profile") {{ line }}
       share.share-component-after
-
     div.dummy-associate-block
+  div.fotter
+    p.fotter-ho-title HO!
+    p.fotter-ho-sub-title もっと身近におきなわを
 
 </template>
 
@@ -54,7 +57,13 @@ export default {
       this.date = '2016.11.18';
       this.tags = [ '観光地紹介', '屋我地' ];
       this.share = 149;
-      this.author = '/dist/atufumi.jpg';
+      this.author = '/dist/ryusuke.jpg';
+      this.name = 'りゅうすけ';
+      this.profile = [
+        '沖縄電力で働くお金持ち。',
+        'ダンスもできる、モテる、お金持ちの3拍子。',
+        'みんなの憧れのまとだ。'
+      ];
       this.text = [
         'はいさい、みなさん。',
         '今日は屋我地の魅力についてとことん語っていきますよ！',
@@ -84,6 +93,7 @@ export default {
 :root {
   --main-color: #99CDFF;
   --title-color: #575757;
+  --fotter-color: #95989A;
   --main-font: avenir;
   --sub-font: "Noto Sans Japanese";
   --hover-hand: {
@@ -111,6 +121,7 @@ body {
   display: flex;
   justify-content: center;
   margin-top: 50px;
+  padding-bottom: 150px;
   & .article-content-block {
     position: relative;
     width: 580px;
@@ -178,7 +189,7 @@ body {
       border-radius: 3px;
     }
     & .article-content-share {
-      margin-top: 10px;
+      margin-top: 15px;
       & .share-count {
         display: flex;
         justify-content: flex-end;
@@ -205,7 +216,7 @@ body {
         }
       }
       & .share-component {
-        margin-top: 20px;
+        margin-top: 30px;
       }
     }
     & .article-content-text {
@@ -216,10 +227,44 @@ body {
         font-size: 15px;
         margin: 0px 0 0;
         line-height: 2;
+        letter-spacing: 0.5px;
+      }
+    }
+    & .author-label {
+      margin-top: 100px;
+      margin-bottom: 0;
+      font-family: var(--sub-font);
+      color: var(--title-color);
+      font-size: 20px;
+      font-weight: 300;
+      letter-spacing: 2px;
+    }
+    & .article-content-author {
+      font-family: var(--sub-font);
+      color: var(--title-color);
+      position: relative;
+      margin-top: 22px;
+      display: flex;
+      & img {
+        size: 100px;
+        object-fit: cover;
+        border-radius: 50%;
+        margin-right: 20px;
+      }
+      & .name {
+        margin-top: 0;
+        margin-bottom: 8px;
+        font-size: 18px;
+        letter-spacing: 1px;
+      }
+      & .profile {
+        font-size: 12px;
+        margin-top: 0;
+        margin-bottom: 3px;
       }
     }
     & .share-component-after {
-      margin-top: 100px;
+      margin-top: 80px;
     }
   }
   & .dummy-associate-block {
@@ -256,5 +301,31 @@ body {
     top: -23.5px;
     left: -1.3px;;
   }
+}
+
+/*footer*/
+.fotter {
+  display: flex;
+  position: absolute;
+  left: 130px;
+}
+
+.fotter-ho-title {
+  font-family: susan;
+  font-size: 32px;
+  letter-spacing: 4px;
+  color: var(--fotter-color);
+  padding-top: 0;
+  padding-bottom: 25px;
+  margin: 0;
+  margin-right: 5px;
+}
+
+.fotter-ho-sub-title {
+  font-family: var(--sub-font);
+  font-weight: 300;
+  font-size: 10px;
+  letter-spacing: 1px;
+  color: var(--fotter-color);
 }
 </style>

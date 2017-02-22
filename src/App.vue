@@ -283,7 +283,7 @@ export default {
   letter-spacing: 4px;
   color: var(--fotter-color);
   padding-top: 0;
-  padding-bottom: 35px;
+  padding-bottom: 25px;
   margin: 0;
   margin-right: 5px;
 }
@@ -294,7 +294,6 @@ export default {
   font-size: 10px;
   letter-spacing: 1px;
   color: var(--fotter-color);
-
 }
 
 

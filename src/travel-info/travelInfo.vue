@@ -7,9 +7,9 @@ div#travel-info
   div.main-content
     div.main-content-flex-wrapper
       div.map-pins
-        travel-info-map.map-component
-        travel-info-pins.pin-component
-      travel-info-spots.spot-component
+        travel-info-map.map-component(v-bind:pinSpots="pinSpots")
+        travel-info-pins.pin-component(v-bind:pinSpots="pinSpots")
+      travel-info-spots.spot-component(v-on:modifyPinSpots="modifyPinSpots")
 </template>
 
 <script>
@@ -26,6 +26,30 @@ export default {
     'travel-info-map': map,
     'travel-info-pins': pins,
     'travel-info-spots': spots
+  },
+  data () {
+    return {
+      pinSpots: []
+    }
+  },
+  methods: {
+    modifyPinSpots: function (targetSpot, operate) {
+      switch (operate) {
+        case 'push':
+          this.pinSpots.push(targetSpot);
+          break;
+        case 'pop':
+          this.pinSpots.some((spot, index) => {
+            if(spot.id === targetSpot.id) {
+              this.pinSpots.splice(index, 1);
+              return true;
+            };
+          });
+          break;
+        default:
+
+      }
+    }
   }
 }
 </script>

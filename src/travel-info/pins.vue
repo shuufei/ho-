@@ -1,22 +1,42 @@
 <template lang="pug">
 div#travel-info-pins(v-bind:class="{'empty-message-box': isEmptyMessage()}")
   p.pins-title PIN
-  p.empty-message(v-if="pins.length === 0") 気になったSPOTのPINボタンを押してください
+  p.empty-message(v-show="pinSpots.length === 0") 気になったSPOTのPINボタンを押してください
+  div.pin-spots-block(v-show="pinSpots.length !== 0")
+    pin-spot.pin-spot-component(v-for="spot in pinSpots"
+      v-bind:id="spot.id"
+      v-bind:name="spot.name"
+      v-bind:score="spot.score"
+      v-bind:image="spot.image")
 </template>
 
 <script>
+
+import pinSpot from './pinSpot.vue'
+
 export default {
   name: 'travel-info-pins',
+  props: [
+    // pinSpots: [{
+    //  id: integer,
+    //  name: string,
+    //  score: integer,
+    //  image: string
+    // }]
+    'pinSpots'
+  ],
   data () {
     return {
-      pins: []
     }
   },
   methods: {
     isEmptyMessage: function (event) {
-      if (this.pins.length === 0) { return true; }
+      if (this.pinSpots.length === 0) { return true; }
       return false;
     }
+  },
+  components: {
+    'pin-spot': pinSpot
   }
 }
 </script>
@@ -38,6 +58,7 @@ export default {
   height: 180px;
   border-radius: 3px;
   box-shadow: 0 3px 4px rgba(0, 0, 0, 0.15);
+  overflow: scroll;
   position: relative;
   & .pins-title {
     font-family: var(--main-font);
@@ -56,6 +77,20 @@ export default {
     font-size: 14px;
     opacity: 0.7;
   }
+  & .pin-spots-block {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    margin-left: 50px;
+    margin-top: 55px;
+    padding-bottom: 30px;
+    position: absolute;
+    width: calc(130px * 3);
+    & .pin-spot-component {
+      margin-right: 30px;
+      margin-bottom: 15px;
+    }
+  }
 }
 
 .empty-message-box {
@@ -63,4 +98,6 @@ export default {
   justify-content: center;
   align-items: center;
 }
+
+
 </style>

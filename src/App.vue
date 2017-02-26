@@ -1,5 +1,5 @@
 <template lang="pug">
-div#home.base-background
+div#home.base-background(v-scroll="onScroll")
   global-menu.menu-content
   div.top-content
     div.top-title
@@ -27,6 +27,20 @@ import menu from './common/menu.vue'
 import topBlog from './top-content/blog.vue'
 import topTravelInfo from './top-content/travelInfo.vue'
 import topAbout from './top-content/about.vue'
+
+window.onscroll = function (event) {
+  var scrollTop =
+     document.documentElement.scrollTop ||  // IE、Firefox、Opera
+     document.body.scrollTop;               // Chrome、Safari
+  var border1 = document.getElementsByClassName('top-accent-border1');
+  var border2 = document.getElementsByClassName('top-accent-border2');
+  border1[0].classList.add('top-accent-border1-scroll');
+  border2[0].classList.add('top-accent-border2-scroll');
+  if (scrollTop <= 100) {
+    border1[0].classList.remove('top-accent-border1-scroll');
+    border2[0].classList.remove('top-accent-border2-scroll');
+  }
+}
 
 // let topInstance = {
 export default {
@@ -83,6 +97,10 @@ export default {
       this.isInvalidImage2 = false;
       this.isActiveImage2 = false;
       setTimeout(this.topImageState1, 1000);
+    },
+    onScroll: function (event, position) {
+      console.log('scroll');
+      console.log(position);
     }
   }
 }
@@ -179,12 +197,16 @@ export default {
 .top-accent-border1 {
   display: inline-block;
   position: absolute;
-  top: 20px;
+  top: 0px;
   left: 0;
   background: var(--main-color);
   height: 80px;
   width: 10px;
   border-radius: 3px;
+  transition: all 0.5s 0s ease;
+}
+.top-accent-border1-scroll {
+  transform: translateY(20px);
 }
 .top-accent-border2 {
   display: inline-block;
@@ -194,8 +216,11 @@ export default {
   height: 80px;
   width: 10px;
   border-radius: 3px;
+  transition: all 0.5s 0s ease;
 }
-
+.top-accent-border2-scroll {
+  transform: translateY(-20px);
+}
 
 /*top title*/
 .top-title {

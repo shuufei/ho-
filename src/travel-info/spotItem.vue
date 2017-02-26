@@ -5,7 +5,7 @@ div#spot-item
   div.info
     p.name {{ name }}
     i.fi-star(v-for="i in score")
-    div.pin-button.pin-inactive PIN
+    div.pin-button(v-bind:class="isActive ? 'pin-active' : 'pin-inactive'" v-on:click="pushPinButon") PIN
 </template>
 
 <script>
@@ -16,7 +16,18 @@ export default {
     'name',
     'score',
     'image'
-  ]
+  ],
+  data () {
+    return {
+      isActive: false
+    }
+  },
+  methods: {
+    pushPinButon: function (event) {
+      this.isActive = !this.isActive;
+      this.$emit('pushPinButon', this.id, this.isActive);
+    }
+  }
 }
 </script>
 

@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import VueScroll from 'vue-scroll'
 import App from './App.vue'
 import BlogWrap from './blog/blogWrap.vue'
 import Blog from './blog/blog.vue'
@@ -7,6 +8,7 @@ import TravelInfo from './travel-info/travelInfo.vue'
 import Article from './blog/article.vue'
 
 Vue.use(VueRouter)
+Vue.use(VueScroll)
 
 const NotFound = App;
 const Home = App;

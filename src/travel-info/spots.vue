@@ -3,12 +3,14 @@ div#travel-info-spots
   p.spot-title SPOT
   div.spot-filter
     i.fi-filter
-  div.spot-items
+  div.spot-items(v-scroll="spotsScroll" v-bind:class="{ 'spot-items-scroll': isScroll }")
     spot-item.spot-item-component(v-for="spot in spots"
       v-bind:id="spot.id"
-      v-bind:name="spot.name",
-      v-bind:score="spot.score",
-      v-bind:image="spot.image")
+      v-bind:name="spot.name"
+      v-bind:score="spot.score"
+      v-bind:image="spot.image"
+      v-bind:active="spot.active"
+      v-on:pushPinButon="modifyPinSpots")
     div.more-loading
       p もっと見る
 </template>
@@ -26,8 +28,35 @@ export default {
     'content-order': contentOrder,
     'spot-item': spotItem
   },
+  methods: {
+    modifyPinSpots: function (id, isActive) {
+      let targetSpot;
+      this.spots.some((spot) => {
+        if (spot.id === id) {
+          targetSpot = spot;
+          return true;
+        }
+      });
+      targetSpot.active = isActive;
+      if (isActive) {
+        console.log('push');
+        this.$emit('modifyPinSpots', targetSpot, 'push');
+      } else {
+        console.log('pop');
+        this.$emit('modifyPinSpots', targetSpot, 'pop');
+      }
+    },
+    spotsScroll: function (event, position) {
+      if (position.scrollTop === 0) {
+        this.isScroll = false;
+      } else {
+        this.isScroll = true;
+      }
+    }
+  },
   data () {
     return {
+      isScroll: false,
       spots: [
         {
           id: 1,
@@ -48,19 +77,19 @@ export default {
           image: '/dist/pinapo.jpg'
         },
         {
-          id: 1,
+          id: 4,
           name: '美ら海水族館',
           score: 5,
           image: '/dist/tyuraumi.jpg'
         },
         {
-          id: 2,
+          id: 5,
           name: '首里城',
           score: 4,
           image: '/dist/shuri.jpg'
         },
         {
-          id: 3,
+          id: 6,
           name: 'パイナップルパーク',
           score: 2,
           image: '/dist/pinapo.jpg'
@@ -109,9 +138,10 @@ export default {
   }
   & .spot-items {
     height: 440px;
-    margin-top: 100px;
+    margin-top: 80px;
     overflow-y: scroll;
     padding-right: 40px;
+    padding-top: 20px;
     & .spot-item-component {
       margin-bottom: 30px;
     }
@@ -125,6 +155,9 @@ export default {
         letter-spacing: 1px;
       }
     }
+  }
+  & .spot-items-scroll {
+    box-shadow: inset 0 10px 10px -15px #333;
   }
 }
 

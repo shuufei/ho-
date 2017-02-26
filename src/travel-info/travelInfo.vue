@@ -5,9 +5,11 @@ div#travel-info
     div.title-under-line
       p.title 旅INFO
   div.main-content
-    travel-info-map.map-component
-    travel-info-pins.pin-component
-    travel-info-spots.spot-component
+    div.main-content-flex-wrapper
+      div.map-pins
+        travel-info-map.map-component
+        travel-info-pins.pin-component
+      travel-info-spots.spot-component
 </template>
 
 <script>
@@ -44,6 +46,7 @@ export default {
   text-align: center;
   -webkit-font-smoothing: antialiased;
   & .title-block {
+    flex:1;
     position: relative;
     margin: 120px auto 0;
     width: 150px;
@@ -65,6 +68,28 @@ export default {
         letter-spacing: 1.5px;
         top: -25.5px;
         left: 0px;
+    }
+  }
+  & .main-content {
+    margin-top: 60px;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 100px;
+    & .main-content-flex-wrapper {
+      display: flex;
+      width: 910px;
+      & .map-pins {
+        margin-right: 50px;
+        &. map-component {
+
+        }
+        & .pin-component {
+          margin-top: 30px;
+        }
+      }
+      & .spot-component {
+
+      }
     }
   }
 }

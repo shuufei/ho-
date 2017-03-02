@@ -9,7 +9,9 @@ div#travel-info
       div.map-pins
         travel-info-map.map-component(v-bind:pinSpots="pinSpots")
         travel-info-pins.pin-component(v-bind:pinSpots="pinSpots")
-      travel-info-spots.spot-component(v-on:modifyPinSpots="modifyPinSpots")
+      travel-info-spots.spot-component(v-on:modifyPinSpots="modifyPinSpots" v-on:showSpot="showSpot")
+  div.show-spot-background(v-show="isShowSpot")
+    spot.spot-component(v-bind:spot="spot" v-on:closeSpot="closeSpot")
 </template>
 
 <script>
@@ -18,6 +20,7 @@ import menu from '../common/menu.vue'
 import map from './map.vue'
 import pins from './pins.vue'
 import spots from './spots.vue'
+import spot from './spot.vue'
 
 export default {
   name: 'travel-info',
@@ -25,11 +28,14 @@ export default {
     'global-menu': menu,
     'travel-info-map': map,
     'travel-info-pins': pins,
-    'travel-info-spots': spots
+    'travel-info-spots': spots,
+    'spot': spot
   },
   data () {
     return {
-      pinSpots: []
+      pinSpots: [],
+      spot: {},
+      isShowSpot: false
     }
   },
   methods: {
@@ -46,9 +52,14 @@ export default {
             };
           });
           break;
-        default:
-
       }
+    },
+    showSpot: function (targetSpot) {
+      this.spot = targetSpot;
+      this.isShowSpot = true;
+    },
+    closeSpot: function () {
+      this.isShowSpot = false;
     }
   }
 }
@@ -69,10 +80,15 @@ export default {
 #travel-info {
   text-align: center;
   -webkit-font-smoothing: antialiased;
+  position: absolute;;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
   & .title-block {
     flex:1;
     position: relative;
-    margin: 120px auto 0;
+    margin: 125px auto 0;
     width: 150px;
     text-align: center;
     @apply --hover-hand;
@@ -98,7 +114,7 @@ export default {
     margin-top: 60px;
     display: flex;
     justify-content: center;
-    padding-bottom: 100px;
+    /*padding-bottom: 100px;*/
     & .main-content-flex-wrapper {
       display: flex;
       width: 910px;
@@ -115,6 +131,18 @@ export default {
 
       }
     }
+  }
+  & .show-spot-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 101;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }
 

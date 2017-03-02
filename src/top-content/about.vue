@@ -95,7 +95,7 @@ export default {
   font-family: susan;
   font-size: 26px;
   letter-spacing: 4px;
-  margin-top: 100px;
+  margin-top: 70px;
   margin-left: 8px;
 }
 
@@ -104,8 +104,11 @@ export default {
   font-size: 15px;
   font-weight: 300;
   color: var(--title-color);
-  margin: 10px auto;
-  letter-spacing: 2px;
+  margin: 50px auto;
+  & p {
+    margin-bottom: 8px;
+    letter-spacing: 2px;
+  }
 }
 
 

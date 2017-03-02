@@ -81,14 +81,14 @@ export default {
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
-    margin-left: 50px;
+    margin-left: 30px;
     margin-top: 55px;
-    padding-bottom: 30px;
+    padding-bottom: 15px;
     position: absolute;
     width: calc(130px * 3);
     & .pin-spot-component {
-      margin-right: 30px;
-      margin-bottom: 15px;
+      margin-right: 12px;
+      margin-bottom: 10px;
     }
   }
 }

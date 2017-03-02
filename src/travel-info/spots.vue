@@ -10,7 +10,8 @@ div#travel-info-spots
       v-bind:score="spot.score"
       v-bind:image="spot.image"
       v-bind:active="spot.active"
-      v-on:pushPinButon="modifyPinSpots")
+      v-on:pushPinButon="modifyPinSpots"
+      v-on:pushSpot="showSpot")
     div.more-loading
       p もっと見る
 </template>
@@ -45,6 +46,16 @@ export default {
         console.log('pop');
         this.$emit('modifyPinSpots', targetSpot, 'pop');
       }
+    },
+    showSpot: function (id) {
+      let targetSpot;
+      this.spots.some((spot) => {
+        if (spot.id === id) {
+          targetSpot = spot;
+          return true;
+        }
+      });
+      this.$emit('showSpot', targetSpot);
     },
     spotsScroll: function (event, position) {
       if (position.scrollTop === 0) {

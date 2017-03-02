@@ -34,11 +34,13 @@ window.onscroll = function (event) {
      document.body.scrollTop;               // Chrome、Safari
   var border1 = document.getElementsByClassName('top-accent-border1');
   var border2 = document.getElementsByClassName('top-accent-border2');
-  border1[0].classList.add('top-accent-border1-scroll');
-  border2[0].classList.add('top-accent-border2-scroll');
-  if (scrollTop <= 100) {
-    border1[0].classList.remove('top-accent-border1-scroll');
-    border2[0].classList.remove('top-accent-border2-scroll');
+  if (border1.length !== 0 && border2.length !== 0) {
+    border1[0].classList.add('top-accent-border1-scroll');
+    border2[0].classList.add('top-accent-border2-scroll');
+    if (scrollTop <= 100) {
+      border1[0].classList.remove('top-accent-border1-scroll');
+      border2[0].classList.remove('top-accent-border2-scroll');
+    }
   }
 }
 

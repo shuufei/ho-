@@ -1,7 +1,8 @@
 <template lang="pug">
 div#pin-spot
   img(v-bind:src="image")
-  p.spot-name {{ name }}
+  div.spot-name-wrapper
+    p.spot-name {{ name }}
 </template>
 
 <script>
@@ -23,6 +24,8 @@ export default {
   --main-font: avenir;
   --sub-font: "Noto Sans Japanese";
   --map-background: #E2F2FC;
+  --pin-image-height: 55px;
+  --pin-image-width: 85.5px;
   --hover-hand: {
     cursor: pointer;
     cursor: hand;
@@ -31,20 +34,37 @@ export default {
 
 #pin-spot {
   text-align: left;
-  width: 100px;
+  width: var(--pin-image-width);
+  position: relative;
   & img {
-    height: 65px;
-    width: 100px;
+    height: var(--pin-image-height);
+    width: var(--pin-image-width);
     border-radius: 3px;
   }
-  & .spot-name {
-    color: var(--title-color);
-    font-family: var(--sub-font);
-    font-size: 10px;
-    letter-spacing: 0.5px;
-    line-height: 1.3;
-    margin: 0;
-    margin-top: 0;
+  & .spot-name-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: var(--pin-image-width);
+    height: var(--pin-image-height);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 3px;
+    opacity: 0;
+    @apply --hover-hand;
+    &:hover {
+      opacity: 1;
+      background: rgba(0, 0, 0, 0.3);
+    }
+    & .spot-name {
+      color: white;
+      font-family: var(--sub-font);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      line-height: 1.3;
+    }
   }
 }
 

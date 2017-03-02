@@ -1,9 +1,9 @@
 <template lang="pug">
 div#spot-item
   div.image
-    img(v-bind:src="image")
+    img(v-bind:src="image" v-on:click="pushSpot")
   div.info
-    p.name {{ name }}
+    p.name(v-on:click="pushSpot") {{ name }}
     i.fi-star(v-for="i in score")
     div.pin-button(v-bind:class="isActive ? 'pin-active' : 'pin-inactive'" v-on:click="pushPinButon") PIN
 </template>
@@ -26,6 +26,9 @@ export default {
     pushPinButon: function (event) {
       this.isActive = !this.isActive;
       this.$emit('pushPinButon', this.id, this.isActive);
+    },
+    pushSpot: function (event) {
+      this.$emit('pushSpot', this.id);
     }
   }
 }

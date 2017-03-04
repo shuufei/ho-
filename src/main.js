@@ -5,6 +5,7 @@ import App from './App.vue'
 import BlogWrap from './blog/blogWrap.vue'
 import Blog from './blog/blog.vue'
 import TravelInfo from './travel-info/travelInfo.vue'
+import About from './about/about.vue'
 import Article from './blog/article.vue'
 
 Vue.use(VueRouter)
@@ -17,7 +18,7 @@ const BlogDefault = Blog;
 const ArticlePage = Article;
 // const TravelInfoPage = { template: '<p>trabel info page</p>' }
 const TravelInfoPage = TravelInfo;
-const AboutPage = { template: '<p>about page cache confirm</p>' }
+const AboutPage = About;
 
 const router = new VueRouter({
   mode: 'history',

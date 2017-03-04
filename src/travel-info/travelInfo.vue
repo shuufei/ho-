@@ -106,7 +106,7 @@ export default {
         font-weight: 400;
         color: var(--title-color);
         letter-spacing: 1.5px;
-        top: -25.5px;
+        top: -26.5px;
         left: 0px;
     }
   }

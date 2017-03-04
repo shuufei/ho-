@@ -1,5 +1,5 @@
 <template lang="pug">
-div#travel-info
+div#travel-info(v-bind:class="{'scroll-inactive': isShowSpot}")
   global-menu.menu-content
   div.title-block
     div.title-under-line
@@ -114,7 +114,7 @@ export default {
     margin-top: 60px;
     display: flex;
     justify-content: center;
-    /*padding-bottom: 100px;*/
+    padding-bottom: 100px;
     & .main-content-flex-wrapper {
       display: flex;
       width: 910px;
@@ -133,7 +133,7 @@ export default {
     }
   }
   & .show-spot-background {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
@@ -144,6 +144,10 @@ export default {
     justify-content: center;
     align-items: center;
   }
+}
+
+.scroll-inactive {
+    overflow: hidden;
 }
 
 .menu-content {

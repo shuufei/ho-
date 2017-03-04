@@ -73,7 +73,7 @@ export default {
 #side-block-popular {
   height: 500px;
   width: 350px;
-  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.1);
   text-align: left;
   color: var(--title-color);
   & .side-block-title {

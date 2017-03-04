@@ -152,7 +152,7 @@ export default {
     margin-top: 80px;
     overflow-y: scroll;
     padding-right: 40px;
-    padding-top: 20px;
+    padding-top: 18px;
     & .spot-item-component {
       margin-bottom: 30px;
     }

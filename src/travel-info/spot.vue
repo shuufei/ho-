@@ -2,36 +2,47 @@
 div#spot
   div.close-button(v-on:click="closeSpot")
     i.fi-x
-  div.spot-content(v-if="getSpot()")
-    div.spot-title
-      div.border
-      p.name {{ spotDetail.name }}
-    div.spot-info
-      div.image
-        img(v-bind:src="spotDetail.image")
-      div.meta
-        div.star-block
-          i.fi-star(v-for="i in spotDetail.score")
-        div.place
-          p.label 住所
-          p.value {{ spotDetail.place }}
-        div.flex-wrapper
-          div.stay-time
-            p.label 滞在時間
-            p.value {{ spotDetail.stayTime }}
-          div.open-time
-            p.label 営業時間
-            p.value {{ spotDetail.openTime }}
-        div.home-page
-          p.label ホームページ
-          a.value(v-bind:href="spotDetail.homePage") {{ spotDetail.homePage }}
-    div.description
-      p(v-for="line in spotDetail.description") {{ line }}
-    div.association-articles
-      div.association-article
+  div.scroll-hidden-wrapper
+    div.spot-content(v-if="getSpot()")
+      div.spot-title
+        div.border
+        p.name {{ spotDetail.name }}
+      div.spot-info
+        div.image
+          img(v-bind:src="spotDetail.image")
+        div.meta
+          div.star-block
+            i.fi-star(v-for="i in spotDetail.score")
+          div.place
+            p.label 住所
+            p.value {{ spotDetail.place }}
+          div.flex-wrapper
+            div.stay-time
+              p.label 滞在時間
+              p.value {{ spotDetail.stayTime }}
+            div.open-time
+              p.label 営業時間
+              p.value {{ spotDetail.openTime }}
+          div.home-page
+            p.label ホームページ
+            a.value(v-bind:href="spotDetail.homePage") {{ spotDetail.homePage }}
+      div.description
+        p(v-for="line in spotDetail.description") {{ line }}
+      div.association-articles
+        p.association-label ASSOCIATION
+        spot-association-article.spot-association-article-component(v-for="article in spotDetail.associationArticles"
+          v-bind:id="article.id"
+          v-bind:date="article.date"
+          v-bind:title="article.title"
+          v-bind:image="article.image"
+          v-bind:tags="article.tags"
+          v-bind:share="article.share")
 </template>
 
 <script>
+
+import associationArticle from './spotAssocationArticle.vue'
+
 export default {
   name: 'spot',
   props: [
@@ -64,13 +75,27 @@ export default {
           {
             id: 1,
             date: '2016.12.08',
-            title: '美ら海水族館を紹介するよ'
+            title: '美ら海水族館を紹介するよ',
+            image: '/dist/new-article-image.jpg',
+            tags: [ '観光地紹介', '海' ],
+            share: 120
+          },
+          {
+            id: 1,
+            date: '2016.11.11',
+            title: 'ファイヤーファイヤー',
+            image: '/dist/yagaji7.jpg',
+            tags: [ 'アウトドア' ],
+            share: 87
           }
         ]
       };
       this.spotDetail = targetSpot;
       return true;
     }
+  },
+  components: {
+    'spot-association-article': associationArticle
   }
 }
 </script>
@@ -117,9 +142,10 @@ export default {
   }
   & .spot-content {
     overflow: scroll;
-    height: 550px;
+    height: 510px;
     padding-left: 50px;
     padding-top: 40px;
+    width: 760px;
     & .spot-title {
       display: flex;
       align-items: center;
@@ -202,6 +228,23 @@ export default {
         margin-bottom: 1.5px;
       }
     }
+    & .association-articles {
+      padding-bottom: 50px;
+      margin-top: 60px;
+      text-align: left;
+      & .association-label {
+        color: var(--title-color);
+        font-family: var(--main-font);
+        font-size: 14px;
+        font-weight: 600;
+        letter-spacing: 1px;
+        margin: 0;
+        margin-bottom: 25px;
+      }
+      & .spot-association-article-component {
+        margin-bottom: 20px;
+      }
+    }
   }
 }
 
@@ -220,5 +263,11 @@ export default {
   font-weight: 300;
   letter-spacing: 1.5px;
   margin: 0;
+}
+
+.scroll-hidden-wrapper {
+  height: 550px;
+  overflow: hidden;
+  width: 800px;
 }
 </style>

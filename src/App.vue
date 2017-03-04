@@ -242,7 +242,7 @@ export default {
 }
 .active-image {
   animation: fadeIn 1s ease-in 0s normal forwards;
-  box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.4);
+  box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.3);
 }
 @keyframes fadeIn {
     0% {opacity: 0}

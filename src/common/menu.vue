@@ -185,13 +185,19 @@ export default {
   }
 }
 
+@media screen and (height <= 650px) {
+  .menu-links {
+    margin-top: 100px;
+  }
+}
+
 @keyframes menu-border-motion-home {
   0% {
     width: 0px;
     left: calc(50% - 0px);
   }
   100% {
-    width: 123px;
+    width: 120px;
     left: calc(50% - 61px);
   }
 }
@@ -202,7 +208,7 @@ export default {
     left: calc(50% - 0px);
   }
   100% {
-    width: 115px;
+    width: 110px;
     left: calc(50% - 58px);
   }
 }
@@ -215,7 +221,7 @@ export default {
   }
   100% {
     top: 55px;
-    width: 145px;
+    width: 138px;
     left: calc(50% - 73px);
   }
 }
@@ -226,7 +232,7 @@ export default {
     left: calc(50% - 0px);
   }
   100% {
-    width: 150px;
+    width: 143px;
     left: calc(50% - 75px);
   }
 }

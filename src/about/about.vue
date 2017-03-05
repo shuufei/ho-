@@ -158,7 +158,7 @@ export default {
   & .about-line {
     color: var(--title-color);
     font-family: var(--sub-font);
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 300;
     letter-spacing: 2px;
     margin: 0;

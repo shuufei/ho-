@@ -29,7 +29,7 @@ div#article
         img(v-bind:src="author")
         div.author-profile
           p.name {{ name }}
-          p.profile(v-for="line in profile") {{ line }}
+          p.description {{ description }}
       share.share-component-after
     div.dummy-associate-block
   div.fotter
@@ -59,11 +59,7 @@ export default {
       this.share = 149;
       this.author = '/dist/ryusuke.jpg';
       this.name = 'りゅうすけ';
-      this.profile = [
-        '沖縄電力で働くお金持ち。',
-        'ダンスもできる、モテる、お金持ちの3拍子。',
-        'みんなの憧れのまとだ。'
-      ];
+      this.description = '沖縄で働いている人間。沖縄の勝ち組企業で働いている。顔もいいのでモテるが、残念ながら長い付き合いの彼女がいる。彼に弱点はない。';
       this.text = [
         'はいさい、みなさん。',
         '今日は屋我地の魅力についてとことん語っていきますよ！',
@@ -260,10 +256,12 @@ body {
         font-size: 18px;
         letter-spacing: 1px;
       }
-      & .profile {
+      & .description {
         font-size: 12px;
+        letter-spacing: 1px;
         margin-top: 0;
         margin-bottom: 3px;
+        width: 300px;
       }
     }
     & .share-component-after {

@@ -145,7 +145,7 @@ export default {
     height: 510px;
     padding-left: 50px;
     padding-top: 40px;
-    width: 760px;
+    width: 765px;
     & .spot-title {
       display: flex;
       align-items: center;

@@ -6,6 +6,7 @@
   "private": true,
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack-dev-server --open --inline --hot",
+    "proddev": "cross-env NODE_ENV=development webpack-dev-server --inline --hot --host 0.0.0.0 --public ec2-34-212-90-165.us-west-2.compute.amazonaws.com:8081",
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
   },
   "dependencies": {

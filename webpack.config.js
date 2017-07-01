@@ -1,6 +1,10 @@
 var path = require('path')
 var webpack = require('webpack')
 
+// public server config
+// process.traceDeprecation = true;
+// process.noDeprecation = true;
+
 module.exports = {
   entry: './src/main.js',
   output: {
